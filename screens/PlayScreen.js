@@ -1,6 +1,7 @@
 import { Button, Text, View } from 'react-native';
 
-export default ({ navigation }) => {
+export default ({ route, navigation }) => {
+    const { category } = route.params;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Play</Text>

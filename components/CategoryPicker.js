@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-export default () => {
+export default ({ setCategory }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('random');
   const [items, setItems] = useState([
@@ -23,6 +23,9 @@ export default () => {
         multiple={false}
         mode="BADGE"
         badgeDotColors={["#e76f51", "#00b4d8", "#e9c46a", "#e76f51", "#8ac926", "#00b4d8", "#e9c46a"]}
+        onChangeValue={(value) => {
+            setCategory(value);
+        }}
       />
     </>
   );
