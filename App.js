@@ -1,5 +1,5 @@
-import Navigation from "./components/Navigation";
+import Router from "./components/Router";
 
 export default () => (
-  <Navigation />
+  <Router />
 );
