@@ -1,18 +1,7 @@
+const categoryData = require('../data/categories.json');
+
 class Game {
-    static categories = {
-        'cities': {
-            label: 'Cities',
-            items: [],
-        },
-        'foods': {
-            label: 'Foods',
-            items: [],
-        },
-        'animals': {
-            label: 'Animals',
-            items: []
-        }
-    };
+    static categories = categoryData;
     static randomizeCategory = () => {
         const self = this;
         const keys = Object.keys(self.categories);

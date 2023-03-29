@@ -1,0 +1,24 @@
+{
+	"cities": {
+		"label": "Cities",
+		"items": [{
+				"word": "SINGAPORE",
+				"difficulty": "easy",
+				"hint": "Capital of Singapore"
+			},
+			{
+				"word": "WASHINGTON",
+				"difficulty": "easy",
+				"hint": "Capital of United States"
+			}
+		]
+	},
+	"foods": {
+		"label": "Foods",
+		"items": []
+	},
+	"animals": {
+		"label": "Animals",
+		"items": []
+	}
+}
