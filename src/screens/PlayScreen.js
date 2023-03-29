@@ -2,7 +2,8 @@ import { Button, Text, View } from 'react-native';
 import ScoreText from '../components/ScoreText';
 
 export default ({ route, navigation }) => {
-    const { category } = route.params;
+    const { category, items } = route.params;
+    console.log('Question items:', items);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <ScoreText />

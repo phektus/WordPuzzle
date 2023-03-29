@@ -6,12 +6,15 @@ import Game from '../Game';
 export default ({ navigation }) => {        
     const [category, setCategory] = useState('random');
     const handlePlay = () => {
+        const _category = category === 'random' 
+            ? Game.randomizeCategory()
+            : category;
+        const items = Game.generateItems(_category);
         navigation.navigate({
             name: 'Play',
             params: {
-                category: category === 'random' 
-                    ? Game.randomizeCategory()
-                    : category,
+                category: _category,
+                items: items
             }
         });
     }

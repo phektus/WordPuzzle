@@ -1,24 +1,98 @@
 {
 	"cities": {
 		"label": "Cities",
-		"items": [{
-				"word": "SINGAPORE",
-				"difficulty": "easy",
-				"hint": "Capital of Singapore"
-			},
-			{
-				"word": "WASHINGTON",
-				"difficulty": "easy",
-				"hint": "Capital of United States"
-			}
-		]
+		"items": {
+			"easy": [{
+					"word": "SINGAPORE",
+					"hint": "Capital of Singapore"
+				},
+				{
+					"word": "NEW YORK",
+					"hint": "Home of the U.N. headquarters"
+				}
+			],
+			"medium": [{
+					"word": "TORONTO",
+					"hint": "Most populous city in Canada"
+				},
+				{
+					"word": "VATICAN",
+					"hint": "Smallest nation in the world"
+				}
+			],
+			"hard": [{
+					"word": "DUBAI",
+					"hint": "Home of the world's tallest building"
+				},
+				{
+					"word": "CAIRO",
+					"hint": "Largest African city"
+				}
+			]
+		}
 	},
 	"foods": {
 		"label": "Foods",
-		"items": []
+		"items": {
+			"easy": [{
+					"word": "SINGAPORE",
+					"hint": "Capital of Singapore"
+				},
+				{
+					"word": "NEW YORK",
+					"hint": "Home of the U.N. headquarters"
+				}
+			],
+			"medium": [{
+					"word": "TORONTO",
+					"hint": "Most populous city in Canada"
+				},
+				{
+					"word": "VATICAN",
+					"hint": "Smallest nation in the world"
+				}
+			],
+			"hard": [{
+					"word": "DUBAI",
+					"hint": "Home of the world's tallest building"
+				},
+				{
+					"word": "CAIRO",
+					"hint": "Largest African city"
+				}
+			]
+		}
 	},
 	"animals": {
 		"label": "Animals",
-		"items": []
+		"items": {
+			"easy": [{
+					"word": "SINGAPORE",
+					"hint": "Capital of Singapore"
+				},
+				{
+					"word": "NEW YORK",
+					"hint": "Home of the U.N. headquarters"
+				}
+			],
+			"medium": [{
+					"word": "TORONTO",
+					"hint": "Most populous city in Canada"
+				},
+				{
+					"word": "VATICAN",
+					"hint": "Smallest nation in the world"
+				}
+			],
+			"hard": [{
+					"word": "DUBAI",
+					"hint": "Home of the world's tallest building"
+				},
+				{
+					"word": "CAIRO",
+					"hint": "Largest African city"
+				}
+			]
+		}
 	}
 }
