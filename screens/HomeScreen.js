@@ -1,28 +1,32 @@
 import { useState } from 'react';
 import { Button, View, Text } from 'react-native';
 import CategoryPicker from '../components/CategoryPicker';
+import Game from '../Game';
 
-export default ({ route, navigation }) => {    
-    const { game } = route.params;
-    const categories = game.getCategories();
-    
+export default ({ navigation }) => {        
     const [category, setCategory] = useState('random');
+    const handlePlay = () => {
+        navigation.navigate({
+            name: 'Play',
+            params: {
+                category: category === 'random' 
+                    ? Game.randomizeCategory()
+                    : category,
+            }
+        });
+    }
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Select a Category:</Text>
             <CategoryPicker 
-                categories={categories} 
+                categories={Game.categories} 
                 setCategory={setCategory}
             />
 
             <Button
                 title="Play"
-                onPress={() => navigation.navigate({
-                    name: 'Play',
-                    params: {
-                        category: category
-                    }
-                })}
+                onPress={handlePlay}
             />
             <Button
                 title="Leaderboards"
