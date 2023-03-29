@@ -4,7 +4,7 @@ export default ({ route, navigation }) => {
     const { category } = route.params;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Play</Text>
+        <Text>Category: {category}</Text>
         <Button title="Back to Home" onPress={() => navigation.navigate('Home')} />
       </View>
     );

@@ -6,7 +6,7 @@ import DetailsScreen from '../screens/DetailsScreen';
 import LeaderboardsScreen from '../screens/LeaderboardsScreen';
 import PlayScreen from '../screens/PlayScreen';
 
-export default () => {
+export default ({ game }) => {
     const Stack = createNativeStackNavigator();
 
     return (
@@ -42,6 +42,9 @@ export default () => {
                 <Stack.Screen 
                     name="Home" 
                     component={HomeScreen} 
+                    initialParams={{
+                        game: game
+                    }}
                     options={{ title: 'Words Puzzle' }}
                 />       
             </Stack.Navigator>
