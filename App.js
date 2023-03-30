@@ -6,6 +6,6 @@ export default () => {
   return (
     <Provider store={store}>
       <Router />
-    </Provider>    
+    </Provider>
   );
 } 

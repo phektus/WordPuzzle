@@ -14,8 +14,9 @@ export default ({ navigation }) => {
             name: 'Play',
             params: {
                 category: _category,
-                items: items
-            }
+                items: items,
+                step: 0
+            },
         });
     }
 
