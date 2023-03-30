@@ -1,39 +1,44 @@
 import { useState } from 'react';
-import { Text, Button } from 'react-native';
+import { Text, Button, TextInput} from 'react-native';
 
 export default ({ word, jumbled }) => {
     const [state, setState] = useState({
-        guess: Array()
+        guess: Array(),
+        pressed: Array()
     });
 
-    const handlePress = (e, char) => {
-        let _guess = state.guess;
-        _guess.push(char);
-        setState({ guess: _guess });
+    const handlePress = (e, char, key) => {
+        let _state =  Object.assign({}, state);
+        _state.guess.push(char);
+        _state.pressed.push(key);
+        setState(_state);
     }
 
     const handleReset = (e) => {
-        setState({
-            guess: Array()
-        });
+        let _state =  Object.assign({}, state);
+        _state.guess = Array();
+        _state.pressed = Array();
+        setState(_state);
     }
 
     return (
         <>
-            { state.guess.map((char, key) => (
-                <Button key={key} title={char} />
+            { word.split('').map((char, key) => (  
+                <Text>{key < state.guess.length ? state.guess[key] : ''}</Text>       
             ))}
 
             <Text>{'----'}</Text>
 
             { jumbled.map((char, key) => (
+                state.pressed.indexOf(key) === -1 &&
                 <Button 
                     key={key} 
                     title={char} 
-                    onPress={(e) => handlePress(e, char)} 
-                    // disabled={state.letters[char] !== '_'}
+                    onPress={(e) => handlePress(e, char, key)} 
                 />
             ))}
+
+            <Text>{'----'}</Text>
 
             { state.guess.length > 0 && 
                 <Button title='Reset' onPress={handleReset}/>
