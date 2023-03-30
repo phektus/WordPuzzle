@@ -3,32 +3,41 @@ import { Text, Button } from 'react-native';
 
 export default ({ word, jumbled }) => {
     const [state, setState] = useState({
-        letters:  Object.fromEntries(word.split('')
-            .map(c => [c, c === ' ' ? ' ' : '_']))
+        guess: Array()
     });
 
     const handlePress = (e, char) => {
-        if(state.letters[char] !== undefined) {
-            const _letters = state.letters;
-            _letters[char] = char;
-            setState({ letters: _letters });
-        }
+        let _guess = state.guess;
+        _guess.push(char);
+        setState({ guess: _guess });
+    }
+
+    const handleReset = (e) => {
+        setState({
+            guess: Array()
+        });
     }
 
     return (
         <>
-            { word.split('').map((char, key) => (
-                <Text key={key}>{state.letters[char]}</Text>
+            { state.guess.map((char, key) => (
+                <Button key={key} title={char} />
             ))}
+
+            <Text>{'----'}</Text>
 
             { jumbled.map((char, key) => (
                 <Button 
                     key={key} 
                     title={char} 
                     onPress={(e) => handlePress(e, char)} 
-                    disabled={state.letters[char] !== '_'}
+                    // disabled={state.letters[char] !== '_'}
                 />
             ))}
+
+            { state.guess.length > 0 && 
+                <Button title='Reset' onPress={handleReset}/>
+            }
         </>
     );
 }
