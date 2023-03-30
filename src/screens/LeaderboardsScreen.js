@@ -1,10 +1,10 @@
-import { Button, Text, View } from 'react-native';
+import { Button, Text } from 'react-native';
 
 export default ({ navigation }) => {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <>
         <Text>Leaderboards</Text>
         <Button title="Back to Home" onPress={() => navigation.navigate('Home')} />
-      </View>
+      </>
     );
 };

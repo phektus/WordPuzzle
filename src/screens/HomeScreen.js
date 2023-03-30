@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, Text } from 'react-native';
 import CategoryPicker from '../components/CategoryPicker';
 import Game from '../Game';
 
@@ -21,7 +21,7 @@ export default ({ navigation }) => {
     }
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <>
             <Text>Select a Category:</Text>
             <CategoryPicker 
                 categories={Game.categories} 
@@ -40,6 +40,6 @@ export default ({ navigation }) => {
                 title="My Details"
                 onPress={() => navigation.navigate('Details')}
             />
-        </View>
+        </>
     );
 }

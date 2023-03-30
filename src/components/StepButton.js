@@ -17,7 +17,7 @@ export default ({
                         items: items,
                         step: step+1
                     },
-                });                
+                });
             } else {
                 navigation.navigate('Home');                
             }    
