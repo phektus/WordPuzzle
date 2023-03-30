@@ -1,32 +1,25 @@
 import { Button, Text, View } from 'react-native';
 import ScoreText from '../components/ScoreText';
+import LevelText from '../components/LevelText';
+import StepButton from '../components/StepButton';
 
 export default ({ route, navigation }) => {
   const { category, items, step } = route.params; 
   const levels = Object.keys(items);
-  const maxStep = levels.length-1;
-  const handlePress = () => {
-    if(step === maxStep) {
-      navigation.navigate('Home');
-    } else {
-      navigation.navigate({
-        name: 'Play',
-        params: {
-            category: category,
-            items: items,
-            step: step+1
-        },
-    });
-    }    
-  }
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <ScoreText />
       <Text>Category: {category}</Text>
-      <Text>{step+1} / {levels.length}</Text>
+      <LevelText step={step+1} maxSteps={levels.length} />
       <Text>Hint: {items[levels[step]]['hint']}</Text>
-      <Button title={step === maxStep ? 'Finish' : 'Next'} onPress={handlePress} />
+      <StepButton 
+        navigation={navigation}
+        step={step}
+        maxSteps={levels.length-1}
+        category={category}
+        items={items}
+      />
     </View>
   );
 };
