@@ -1,4 +1,4 @@
-import { Button, Text } from 'react-native';
+import { Button, Text } from '@rneui/themed';
 
 export default ({ navigation }) => {
     return (

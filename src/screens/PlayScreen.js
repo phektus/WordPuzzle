@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Text } from '@rneui/themed';
 
 import { useDispatch } from 'react-redux';
 import { incrementByAmount } from '../redux/features/score/scoreSlice';
@@ -92,6 +92,7 @@ export default ({ route, navigation }) => {
             { getLetters().map((char, key) => (
                 state.pressed.indexOf(key) === -1 &&
                 <Button 
+                    type='outline'
                     key={key} 
                     title={char} 
                     onPress={(e) => handlePress(e, char, key)} 

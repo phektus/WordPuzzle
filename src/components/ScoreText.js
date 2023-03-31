@@ -1,4 +1,4 @@
-import { Text } from 'react-native';
+import { Text } from '@rneui/themed';
 import { useSelector } from 'react-redux';
 import { selectScore } from '../redux/features/score/scoreSlice';
 

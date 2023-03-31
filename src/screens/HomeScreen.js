@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Text } from '@rneui/themed';
 
 import { useDispatch } from 'react-redux';
 import { resetScore } from '../redux/features/score/scoreSlice';

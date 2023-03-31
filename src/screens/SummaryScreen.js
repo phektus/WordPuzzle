@@ -1,4 +1,4 @@
-import { Text, Button } from 'react-native';
+import { Text, Button } from '@rneui/themed';
 
 import { useSelector } from 'react-redux';
 import { selectScore } from '../redux/features/score/scoreSlice';

@@ -1,4 +1,4 @@
-import { Text } from 'react-native';
+import { Text } from '@rneui/themed';
 
 export default ({step, maxSteps}) => (
     <>
