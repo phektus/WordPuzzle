@@ -16,23 +16,29 @@ export default () => {
                 initialRouteName="Home"
                 screenOptions={{
                     headerStyle: {
-                        backgroundColor: 'lightblue',
+                        backgroundColor: 'blue',
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                     },
-                }}
+                }}                
             >
                 <Stack.Screen 
                     name="Play" 
                     component={PlayScreen}
-                    options={{ title: 'Play' }}
+                    options={{ 
+                        title: 'Play',
+                        headerShown: false
+                    }}
                 />
                 <Stack.Screen 
                     name="Summary" 
                     component={SummaryScreen} 
-                    options={{ title: 'Game Summary' }}
+                    options={{ 
+                        title: 'Game Summary',
+                        headerShown: false
+                    }}
                 /> 
                 <Stack.Screen 
                     name="Leaderboards" 
@@ -48,7 +54,9 @@ export default () => {
                 <Stack.Screen 
                     name="Home" 
                     component={HomeScreen} 
-                    options={{ title: 'Words Puzzle' }}
+                    options={{ 
+                        title: 'Words Puzzle',                         
+                    }}
                 />                    
             </Stack.Navigator>
         </NavigationContainer>
