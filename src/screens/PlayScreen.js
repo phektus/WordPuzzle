@@ -55,8 +55,18 @@ export default ({ route, navigation }) => {
         reset();
     }
 
-    const handleSubmit = (e) => {
+    const advance = () => {
+        if(state.step < levels.length-1) {
+            reset(true);          
+        } else {
+            navigation.navigate('Home');                
+        }   
+    }
 
+    const handleSubmit = (e) => {
+        const is_correct = state.guess.join('') === getWord();
+        alert(is_correct ? 'CORRECT!' : 'Sorry, wrong answer');
+        advance();
     }
 
     return (
@@ -88,19 +98,15 @@ export default ({ route, navigation }) => {
 
             <Text>{state.guess.length} / {getWord().length}</Text>
 
-            { state.guess.length === getWord().length-1 && 
+            { state.guess.length === getWord().length && 
                 <Button title='Submit' onPress={handleSubmit}/>
             }
 
             <Text>Hint: {getHint()}</Text>
 
-            <Button title={state.step < levels.length-1 ? 'Skip' : 'Finish'} onPress={() => {
-                if(state.step < levels.length-1) {
-                    reset(true);          
-                } else {
-                    navigation.navigate('Home');                
-                }    
-            }} 
+            <Button 
+                title={state.step < levels.length-1 ? 'Skip' : 'Finish'} 
+                onPress={(e) => advance()} 
             />
         </>
     );
