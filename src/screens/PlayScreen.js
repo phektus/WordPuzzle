@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Button, Text } from 'react-native';
+
+import { useDispatch } from 'react-redux'
+import { incrementByAmount } from '../redux/features/score/scoreSlice';
+
 import Game from '../Game';
 import { shuffle } from '../CustomUtils';
 import ScoreText from '../components/ScoreText';
@@ -8,6 +12,8 @@ import LevelText from '../components/LevelText';
 export default ({ route, navigation }) => {
 	const { category, items } = route.params; 
 	const levels = Object.keys(items);
+
+    const dispatch = useDispatch();
 
     const shuffleLetters = (str) => {
         return shuffle(str.split('').filter((c) => c !== ' '));
@@ -82,10 +88,12 @@ export default ({ route, navigation }) => {
     const handleSubmit = (e) => {
         const is_correct = state.guess.join('') === getWordWithoutSpaces();
         const points = Game.getPoints(getDifficulty());
-        const msg = is_correct
-            ? 'CORRECT! You earn '+ points +' points'
-            : 'Sorry, wrong answer';
-        alert(msg);
+        let msg = 'Sorry, wrong answer';
+        if(is_correct === true) {
+            msg = 'CORRECT! You earn '+ points +' points';
+            dispatch(incrementByAmount(points));
+        }
+        alert(msg);        
         advance();
     }
 
