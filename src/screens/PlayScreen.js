@@ -15,9 +15,8 @@ export default ({ route, navigation }) => {
 
     const dispatch = useDispatch();
 
-    const shuffleLetters = (str) => {
-        return shuffle(str.split('').filter((c) => c !== ' '));
-    }
+    const shuffleLetters = (str) => shuffle(
+        str.split('').filter((c) => c !== ' '));
 
     const [state, setState] = useState({
         score: 0,
@@ -27,25 +26,11 @@ export default ({ route, navigation }) => {
         letters: null,
     });
 
-    const getDifficulty = () => {
-        return levels[state.step];
-    }
-
-    const getItem = () => {
-        return items[getDifficulty()];
-    };
-
-    const getWord = () => {
-        return getItem().word;
-    };
-
-    const getWordWithoutSpaces = () => {
-        return getWord().replaceAll(' ','');
-    }
-
-    const getHint = () => {
-        return getItem().hint;
-    };
+    const getDifficulty = () => levels[state.step];
+    const getItem = () => items[getDifficulty()];
+    const getWord = () => getItem().word;
+    const getWordWithoutSpaces = () => getWord().replaceAll(' ','');
+    const getHint = () => getItem().hint;
 
     const getLetters = () => {
         let letters = state.letters;
@@ -69,12 +54,8 @@ export default ({ route, navigation }) => {
         let _state =  Object.assign({}, state);
         _state.guess = Array();
         _state.pressed = Array();       
-        if(should_step) {
-            _state.step++;
-        }
-        if(include_letters) {
-            _state.letters = null;
-        }
+        if(should_step) _state.step++;
+        if(include_letters) _state.letters = null;
         setState(_state);
     }
 
@@ -108,8 +89,6 @@ export default ({ route, navigation }) => {
                 <Text key={key}>{key < state.guess.length ? state.guess[key] : ''}</Text>       
             ))}
 
-            <Text>{'----'}</Text>
-
             { getLetters().map((char, key) => (
                 state.pressed.indexOf(key) === -1 &&
                 <Button 
@@ -129,10 +108,9 @@ export default ({ route, navigation }) => {
                 <Button title='Submit' onPress={handleSubmit}/>
             }
         
-            <Button 
-                title={state.step < levels.length-1 ? 'Skip' : 'Finish'} 
-                onPress={(e) => advance()} 
-            />
+            { state.guess.length < (getWordWithoutSpaces().length) &&
+                <Button title="Skip" onPress={(e) => advance()} />
+            }                
         </>
     );
 };
