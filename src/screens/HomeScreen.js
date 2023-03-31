@@ -15,7 +15,6 @@ export default ({ navigation }) => {
             params: {
                 category: _category,
                 items: items,
-                step: 0
             },
         });
     }

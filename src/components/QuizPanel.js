@@ -1,11 +1,21 @@
 import { useState } from 'react';
-import { Text, Button, TextInput} from 'react-native';
+import { Text, Button } from 'react-native';
 
-export default ({ word, jumbled }) => {
+export default ({ 
+    word, 
+    jumbled,
+}) => {    
     const [state, setState] = useState({
         guess: Array(),
         pressed: Array()
     });
+
+    const reset = () => {
+        let _state =  Object.assign({}, state);
+        _state.guess = Array();
+        _state.pressed = Array();
+        setState(_state);
+    }
 
     const handlePress = (e, char, key) => {
         let _state =  Object.assign({}, state);
@@ -15,16 +25,17 @@ export default ({ word, jumbled }) => {
     }
 
     const handleReset = (e) => {
-        let _state =  Object.assign({}, state);
-        _state.guess = Array();
-        _state.pressed = Array();
-        setState(_state);
+       reset();
+    }
+
+    const handleSubmit = (e) => {
+
     }
 
     return (
         <>
             { word.split('').map((char, key) => (  
-                <Text>{key < state.guess.length ? state.guess[key] : ''}</Text>       
+                <Text key={key}>{key < state.guess.length ? state.guess[key] : ''}</Text>       
             ))}
 
             <Text>{'----'}</Text>
@@ -42,6 +53,12 @@ export default ({ word, jumbled }) => {
 
             { state.guess.length > 0 && 
                 <Button title='Reset' onPress={handleReset}/>
+            }
+
+            <Text>{state.guess.length} / {word.length}</Text>
+
+            { state.guess.length === word.length-1 && 
+                <Button title='Submit' onPress={handleSubmit}/>
             }
         </>
     );

@@ -10,13 +10,10 @@ export default ({
     <>
         <Button title={step < maxSteps ? 'Next' : 'Finish'} onPress={() => {
             if(step < maxSteps) {
-                navigation.navigate({
-                    name: 'Play',
-                    params: {
-                        category: category,
-                        items: items,
-                        step: step+1
-                    },
+                navigation.navigate('Play', {
+                    category: category,
+                    items: items,
+                    step: step+1
                 });
             } else {
                 navigation.navigate('Home');                
