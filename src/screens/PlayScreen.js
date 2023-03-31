@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Text } from 'react-native';
 
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { incrementByAmount } from '../redux/features/score/scoreSlice';
 
 import Game from '../Game';
@@ -20,6 +20,7 @@ export default ({ route, navigation }) => {
     }
 
     const [state, setState] = useState({
+        score: 0,
         step: 0,
         guess: Array(),
         pressed: Array(),
@@ -81,7 +82,7 @@ export default ({ route, navigation }) => {
         if(state.step < levels.length-1) {
             reset(true, true);          
         } else {
-            navigation.navigate('Home');                
+            navigation.navigate('Summary');                
         }   
     }
 
@@ -118,20 +119,16 @@ export default ({ route, navigation }) => {
                 />
             ))}
 
-            <Text>{'----'}</Text>
+            <Text>Hint: {getHint()}</Text>
 
             { state.guess.length > 0 && 
                 <Button title='Reset' onPress={() => reset()}/>
             }
 
-            <Text>{state.guess.length} / {getWordWithoutSpaces().length}</Text>
-
             { state.guess.length === (getWordWithoutSpaces().length) && 
                 <Button title='Submit' onPress={handleSubmit}/>
             }
-
-            <Text>Hint: {getHint()}</Text>
-
+        
             <Button 
                 title={state.step < levels.length-1 ? 'Skip' : 'Finish'} 
                 onPress={(e) => advance()} 

@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import LeaderboardsScreen from './screens/LeaderboardsScreen';
 import PlayScreen from './screens/PlayScreen';
+import SummaryScreen from './screens/SummaryScreen';
 
 export default () => {
     const Stack = createNativeStackNavigator();
@@ -29,6 +30,11 @@ export default () => {
                     options={{ title: 'Play' }}
                 />
                 <Stack.Screen 
+                    name="Summary" 
+                    component={SummaryScreen} 
+                    options={{ title: 'Game Summary' }}
+                /> 
+                <Stack.Screen 
                     name="Leaderboards" 
                     component={LeaderboardsScreen}
                     options={{ title: 'Leaderboards' }}
@@ -43,7 +49,7 @@ export default () => {
                     name="Home" 
                     component={HomeScreen} 
                     options={{ title: 'Words Puzzle' }}
-                />       
+                />                    
             </Stack.Navigator>
         </NavigationContainer>
     );
