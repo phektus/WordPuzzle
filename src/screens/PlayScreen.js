@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button, Text } from 'react-native';
+import Game from '../Game';
 import { shuffle } from '../CustomUtils';
 import ScoreText from '../components/ScoreText';
 import LevelText from '../components/LevelText';
@@ -16,22 +17,38 @@ export default ({ route, navigation }) => {
         step: 0,
         guess: Array(),
         pressed: Array(),
+        letters: null,
     });
 
+    const getDifficulty = () => {
+        return levels[state.step];
+    }
+
     const getItem = () => {
-        return items[levels[state.step]];
+        return items[getDifficulty()];
     };
 
     const getWord = () => {
         return getItem().word;
     };
 
+    const getWordWithoutSpaces = () => {
+        return getWord().replaceAll(' ','');
+    }
+
     const getHint = () => {
         return getItem().hint;
     };
 
     const getLetters = () => {
-        return shuffleLetters(getWord());
+        let letters = state.letters;
+        if(letters == null) {
+            letters = shuffleLetters(getWord());
+            let _state =  Object.assign({}, state);
+            _state.letters = letters;
+            setState(_state);
+        }
+        return letters;
     };
 
     const handlePress = (e, char, key) => {
@@ -41,31 +58,34 @@ export default ({ route, navigation }) => {
         setState(_state);
     }
 
-    const reset = (should_step=false) => {
+    const reset = (should_step=false, include_letters=false) => {
         let _state =  Object.assign({}, state);
         _state.guess = Array();
         _state.pressed = Array();       
         if(should_step) {
             _state.step++;
         }
+        if(include_letters) {
+            _state.letters = null;
+        }
         setState(_state);
-    }
-
-    const handleReset = (e) => {
-        reset();
     }
 
     const advance = () => {
         if(state.step < levels.length-1) {
-            reset(true);          
+            reset(true, true);          
         } else {
             navigation.navigate('Home');                
         }   
     }
 
     const handleSubmit = (e) => {
-        const is_correct = state.guess.join('') === getWord();
-        alert(is_correct ? 'CORRECT!' : 'Sorry, wrong answer');
+        const is_correct = state.guess.join('') === getWordWithoutSpaces();
+        const points = Game.getPoints(getDifficulty());
+        const msg = is_correct
+            ? 'CORRECT! You earn '+ points +' points'
+            : 'Sorry, wrong answer';
+        alert(msg);
         advance();
     }
 
@@ -93,12 +113,12 @@ export default ({ route, navigation }) => {
             <Text>{'----'}</Text>
 
             { state.guess.length > 0 && 
-                <Button title='Reset' onPress={handleReset}/>
+                <Button title='Reset' onPress={() => reset()}/>
             }
 
-            <Text>{state.guess.length} / {getWord().length}</Text>
+            <Text>{state.guess.length} / {getWordWithoutSpaces().length}</Text>
 
-            { state.guess.length === getWord().length && 
+            { state.guess.length === (getWordWithoutSpaces().length) && 
                 <Button title='Submit' onPress={handleSubmit}/>
             }
 
