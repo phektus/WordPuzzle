@@ -94,7 +94,7 @@ export default ({ route, navigation }) => {
 
             <Text>Hint: {getHint()}</Text>
 
-            <Button title={state.step < levels.length-1 ? 'Next' : 'Finish'} onPress={() => {
+            <Button title={state.step < levels.length-1 ? 'Skip' : 'Finish'} onPress={() => {
                 if(state.step < levels.length-1) {
                     reset(true);          
                 } else {
