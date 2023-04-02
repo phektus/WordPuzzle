@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View } from 'react-native';
-import { Button, Text } from '@rneui/themed';
+import { Button, Text, Overlay } from '@rneui/themed';
 import DefaultStyle from '../styles/DefaultStyle';
 
 import { useDispatch } from 'react-redux';
@@ -25,7 +25,7 @@ export default ({ route, navigation }) => {
         guess: Array(),
         pressed: Array(),
         letters: null,
-    });
+    });          
 
     const getDifficulty = () => levels[state.step];
     const getItem = () => items[getDifficulty()];
@@ -67,6 +67,9 @@ export default ({ route, navigation }) => {
         }   
     }
 
+    const [alertVisible, setAlertVisible] = useState(false);
+    const [alertMsg, setAlertMsg] = useState('Sorry, wrong answer');
+
     const handleSubmit = (e) => {
         const is_correct = state.guess.join('') === getWord();
         const points = Game.getPoints(getDifficulty());
@@ -75,7 +78,12 @@ export default ({ route, navigation }) => {
             msg = 'CORRECT! You earn '+ points +' points';
             dispatch(incrementByAmount(points));
         }
-        alert(msg);        
+        setAlertMsg(msg);      
+        setAlertVisible(true);
+    }
+
+    const handleAlertPress = () => {
+        setAlertVisible(false);
         advance();
     }
 
@@ -144,6 +152,21 @@ export default ({ route, navigation }) => {
                     />
                 }    
             </View>
+
+            <Overlay 
+                isVisible={alertVisible} 
+            >
+                <Text h4>{ alertMsg }</Text>
+                <Button 
+                    color='error'
+                    size='lg' 
+                    onPress={handleAlertPress} 
+                    title='Dismiss' 
+                    style={{
+                        margin: 15,
+                    }}
+                />
+            </Overlay>
         </View>
     );
 };

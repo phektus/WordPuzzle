@@ -9,21 +9,16 @@ import { resetScore } from '../redux/features/score/scoreSlice';
 import Game from '../Game';
 
 export default ({ navigation }) => {        
-    const [category, setCategory] = useState('random');
+    const [category, setCategory] = useState('cities');
     const dispatch = useDispatch();    
 
     const handlePlay = () => {
-        const _category = category === 'random' 
-            ? Game.randomizeCategory()
-            : category;
-        const items = Game.generateItems(_category);
-
         dispatch(resetScore());
-
+        const items = Game.generateItems(category);
         navigation.navigate({
             name: 'Play',
             params: {
-                category: _category,
+                category: category,
                 items: items,
             },
         });
@@ -32,14 +27,6 @@ export default ({ navigation }) => {
     return (
         <View style={DefaultStyle.containerWithHeader}>
             <View style={DefaultStyle.middle}>
-                <CheckBox
-                    checked={category=='random'}
-                    onPress={() => setCategory('random')}
-                    checkedIcon="dot-circle-o"
-                    uncheckedIcon="circle-o"
-                    size={32}
-                    title="Random"
-                />
                 <CheckBox
                     checked={category=='cities'}
                     onPress={() => setCategory('cities')}
