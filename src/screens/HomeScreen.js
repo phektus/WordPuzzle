@@ -75,7 +75,7 @@ export default ({ navigation }) => {
             </View>
             
             
-            <View style={DefaultStyle.row}>               
+            <View style={DefaultStyle.row}>
                 <Button
                     color="secondary"
                     title="Leaderboards"

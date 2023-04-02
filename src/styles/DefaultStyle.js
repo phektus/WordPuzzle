@@ -32,4 +32,9 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    centered: {
+        flex: 0.3,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 });

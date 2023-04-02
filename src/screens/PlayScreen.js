@@ -84,47 +84,67 @@ export default ({ route, navigation }) => {
         <View style={DefaultStyle.containerWithHeader}>
             <View style={DefaultStyle.middle}>     
                 <View style={DefaultStyle.rowEdged}>
-                    <Text>Category: {category}</Text>
+                    <ScoreText />
                     <Text>{state.step} / {levels.length}</Text>
-                    <ScoreText />                    
+                    <Text>{category}</Text>
                 </View>
                 <View style={DefaultStyle.row}>
                     { getWord().split('').map((char, key) => (                          
-                        <Text h3 key={key} style={char !== ' ' && {textDecorationLine: 'underline'}}>
-                            {(key < state.guess.length && char !== ' ') ? state.guess[key] : '   '}
+                        <Text 
+                            h3 key={key} 
+                            style={char !== ' ' && {textDecorationLine: 'underline'}}
+                        >
+                            {(key < state.guess.length && char !== ' ') 
+                                ? state.guess[key] 
+                                : '   '
+                            }
                         </Text>       
                     ))}
                 </View>
             </View>
             
-            <View style={DefaultStyle.middle}>
+            <View style={DefaultStyle.row}>
                 { getLetters().map((char, key) => (
                     state.pressed.indexOf(key) === -1 &&
                     <Button 
-                        type='outline'
+                        color='error'
+                        size='lg'
+                        // type='outline'
                         key={key} 
                         title={char} 
                         onPress={(e) => handlePress(e, char, key)} 
                     />
                 ))}
-
-                <Text>Hint: {getItem().hint}</Text>
-
-                { state.guess.length > 0 && 
-                    <Button title='Reset' onPress={() => reset()}/>
-                }
             </View>
-        
 
-            
+            <Text style={{ textAlign:'center' }}>{getItem().hint}</Text>
 
-            { state.guess.length === (getWord().length) && 
-                <Button title='Submit' onPress={handleSubmit}/>
-            }
-        
-            { state.guess.length < (getWord().length) &&
-                <Button title="Skip" onPress={(e) => advance()} />
-            }                
+            <View style={DefaultStyle.row}>
+                { state.guess.length > 0 && 
+                    <Button 
+                        color='secondary' 
+                        size='lg' 
+                        title='Reset' 
+                        onPress={() => reset()}
+                    />
+                }
+                { state.guess.length === (getWord().length) && 
+                    <Button 
+                        color="success" 
+                        size='lg' 
+                        title='Submit' 
+                        onPress={handleSubmit}
+                    />
+                }        
+                { state.guess.length < (getWord().length) &&
+                    <Button 
+                        color="warning" 
+                        size='lg' 
+                        title="Skip"
+                         onPress={(e) => advance()} 
+                    />
+                }    
+            </View>
         </View>
     );
 };

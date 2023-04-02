@@ -16,7 +16,7 @@ export default () => {
                 initialRouteName="Home"
                 screenOptions={{
                     headerStyle: {
-                        backgroundColor: '#ec193d',
+                        backgroundColor: 'red',
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {
