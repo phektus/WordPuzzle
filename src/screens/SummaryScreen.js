@@ -43,28 +43,27 @@ export default ({ navigation }) => {
     };
 
     return (
-        <View style={DefaultStyle.container}>
-            <View style={DefaultStyle.centered}>
-                <Text h3 style={{ textAlign:'center' }}>
-                    { score > 0 && 'Congratulations! ' }You earned { score } points
-                </Text>
-                <View style={DefaultStyle.rowButtons}>                    
-                    <Button
-                        style={DefaultStyle.rowButtonItem}
-                        title="Share"
-                        onPress={handleShare}
-                        disabled={score == 0}
-                    />
-                    <Button
-                        style={DefaultStyle.rowButtonItem}
-                        color='success'
-                        title="Finish"
-                        onPress={handleFinish}
-                        disabled={!buttonEnabled}
-                    />                
-                </View>
-                
-            </View>
+        <View style={DefaultStyle.absoluteCentered}>
+            <Text h4 style={{ textAlign:'center' }}>
+                { score > 0 && 'Congratulations! ' }You earned { score } points
+            </Text>
+            <View style={DefaultStyle.rowButtons}>
+                <Button
+                    style={DefaultStyle.rowButtonItem}
+                    size={'lg'}
+                    title="Share"
+                    onPress={handleShare}
+                    disabled={score == 0}
+                />
+                <Button
+                    style={DefaultStyle.rowButtonItem}
+                    color='success'
+                    size={'lg'}
+                    title="Finish"
+                    onPress={handleFinish}
+                    disabled={!buttonEnabled}
+                /> 
+            </View>             
         </View>
     );
 }
