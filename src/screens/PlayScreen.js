@@ -92,7 +92,7 @@ export default ({ route, navigation }) => {
             <View style={DefaultStyle.middle}>     
                 <View style={DefaultStyle.rowEdged}>
                     <ScoreText />
-                    <Text>{state.step} / {levels.length}</Text>
+                    <Text>{state.step+1} / {levels.length}</Text>
                     <Text>{category}</Text>
                 </View>
                 <View style={DefaultStyle.row}>

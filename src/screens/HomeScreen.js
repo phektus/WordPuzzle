@@ -54,7 +54,7 @@ export default ({ navigation }) => {
             </View>
             <View style={DefaultStyle.middle}>
                 <Button
-                    color="error"
+                    color="success"
                     size="lg"
                     title="Start"
                     onPress={handlePlay}

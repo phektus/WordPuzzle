@@ -26,6 +26,7 @@ export default StyleSheet.create({
         flex: 0.3,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        margin: 10,
     },
     rowEdged: {
         flex: 0.3,
