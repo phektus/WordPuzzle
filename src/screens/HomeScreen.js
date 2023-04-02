@@ -1,16 +1,27 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { View } from 'react-native';
-import { CheckBox, Button } from '@rneui/themed';
+import { CheckBox, Button, Text } from '@rneui/themed';
 import DefaultStyle from '../styles/DefaultStyle';
-
 import { useDispatch } from 'react-redux';
 import { resetScore } from '../redux/features/score/scoreSlice';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Game from '../Game';
 
 export default ({ navigation }) => {        
     const [category, setCategory] = useState('cities');
-    const dispatch = useDispatch();    
+    const [total_score, setTotalScore] = useState(0);
+    const dispatch = useDispatch(); 
+    
+    useFocusEffect(
+        useCallback(() => {
+            const fetchTotalScore = async () => {
+                const score_from_storage = await AsyncStorage.getItem('@total_score');
+                setTotalScore(score_from_storage);
+            }
+            fetchTotalScore().catch(console.error);
+        }, [])
+    );
 
     const handlePlay = () => {
         dispatch(resetScore());
@@ -59,6 +70,7 @@ export default ({ navigation }) => {
                     title="Start"
                     onPress={handlePlay}
                 />
+                <Text style={{ textAlign:'center' }}>Your total points: {total_score}</Text>
             </View>
             
             

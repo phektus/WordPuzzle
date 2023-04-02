@@ -1,13 +1,32 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { View, Share } from 'react-native';
 import { Text, Button } from '@rneui/themed';
 import DefaultStyle from '../styles/DefaultStyle';
 import { useSelector } from 'react-redux';
 import { selectScore } from '../redux/features/score/scoreSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default ({ navigation }) => {
     const [buttonEnabled, setButtonEnabled] = useState(true);
     const score = useSelector(selectScore);   
+
+    useFocusEffect(
+        useCallback(() => {
+            const updateTotalScore = async () => {
+                try {
+                    const storage_score = await AsyncStorage.getItem('@total_score');
+                    await AsyncStorage.setItem(
+                        '@total_score', 
+                        storage_score === null ? score : parseInt(storage_score) + score
+                    );
+                } catch(e) {
+                    console.error('Problem fetching total score: ', e);
+                }
+            }
+            updateTotalScore().catch(console.error);
+        }, [])
+    );
     
     const handleShare = async () => {
         await Share.share({
@@ -16,8 +35,8 @@ export default ({ navigation }) => {
             });
     };
 
-    const handleFinish = () => {                    
-        setButtonEnabled(false);
+    const handleFinish = async () => {                    
+        setButtonEnabled(false);       
         navigation.navigate('Home');                    
     };
 
