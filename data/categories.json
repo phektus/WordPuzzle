@@ -9,6 +9,10 @@
 				{
 					"word": "NEW YORK",
 					"hint": "Home of the U.N. headquarters"
+				},
+				{
+					"word": "PARIS",
+					"hint": "Home of the Eiffel Tower"
 				}
 			],
 			"medium": [{
@@ -18,6 +22,10 @@
 				{
 					"word": "VATICAN",
 					"hint": "Smallest nation in the world"
+				},
+				{
+					"word": "SALT LAKE",
+					"hint": "Capital of the State of Utah"
 				}
 			],
 			"hard": [{
@@ -27,6 +35,10 @@
 				{
 					"word": "CAIRO",
 					"hint": "Largest African city"
+				},
+				{
+					"word": "VOLGOGRAD",
+					"hint": "Previously known as Stalingrad"
 				}
 			]
 		}
@@ -35,30 +47,42 @@
 		"label": "Foods",
 		"items": {
 			"easy": [{
-					"word": "SINGAPORE",
-					"hint": "Capital of Singapore"
+					"word": "SAUSAGE",
+					"hint": "aka Hotdog"
 				},
 				{
-					"word": "NEW YORK",
-					"hint": "Home of the U.N. headquarters"
+					"word": "APPLE",
+					"hint": "Keeps the Doctor away"
+				},
+				{
+					"word": "RICE",
+					"hint": "Most widely consumed staple food"
 				}
 			],
 			"medium": [{
-					"word": "TORONTO",
-					"hint": "Most populous city in Canada"
+					"word": "SPAGHETTI",
+					"hint": "Italy's favorite"
 				},
 				{
-					"word": "VATICAN",
-					"hint": "Smallest nation in the world"
+					"word": "FRENCH FRIES",
+					"hint": "Goes well with Hamburgers"
+				},
+				{
+					"word": "TOM YUM",
+					"hint": "Popular Thai spicy soup"
 				}
 			],
 			"hard": [{
-					"word": "DUBAI",
-					"hint": "Home of the world's tallest building"
+					"word": "BIRYANI",
+					"hint": "Indian Rice delicacy"
 				},
 				{
-					"word": "CAIRO",
-					"hint": "Largest African city"
+					"word": "SHAWARMA",
+					"hint": "Popular Turkish snack"
+				},
+				{
+					"word": "MOLE POBLANO",
+					"hint": "Mexico's National Dish"
 				}
 			]
 		}
@@ -67,30 +91,42 @@
 		"label": "Animals",
 		"items": {
 			"easy": [{
-					"word": "SINGAPORE",
-					"hint": "Capital of Singapore"
-				},
-				{
-					"word": "NEW YORK",
-					"hint": "Home of the U.N. headquarters"
-				}
-			],
+				"word": "DOG",
+				"hint": "Man's Best Friend"
+			},
+			{
+				"word": "PANDA",
+				"hint": "Cuddly in Black and White"
+			},
+			{
+				"word": "LION",
+				"hint": "King of the Jungle"
+			}
+		],
 			"medium": [{
-					"word": "TORONTO",
-					"hint": "Most populous city in Canada"
+					"word": "SNAKE",
+					"hint": "Crawls and hisses"
 				},
 				{
-					"word": "VATICAN",
-					"hint": "Smallest nation in the world"
+					"word": "GIRAFFE",
+					"hint": "Has the longest necks"
+				},
+				{
+					"word": "ELEPHANT",
+					"hint": "Largest land-based mammal"
 				}
 			],
 			"hard": [{
-					"word": "DUBAI",
-					"hint": "Home of the world's tallest building"
+					"word": "KANGAROO",
+					"hint": "Jumps and boxes"
 				},
 				{
-					"word": "CAIRO",
-					"hint": "Largest African city"
+					"word": "TARDIGRADE",
+					"hint": "Microscopic yet Immortal"
+				},
+				{
+					"word": "MOLERAT",
+					"hint": "A burrowing rodent"
 				}
 			]
 		}
