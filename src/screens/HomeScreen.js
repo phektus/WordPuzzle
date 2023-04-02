@@ -67,6 +67,7 @@ export default ({ navigation }) => {
                 <Button
                     color="success"
                     size="lg"
+                    radius="lg"
                     title="START"
                     onPress={handlePlay}
                 />                
@@ -75,6 +76,7 @@ export default ({ navigation }) => {
             <View style={DefaultStyle.row}>
                 <Button 
                     color="secondary"
+                    radius="lg"
                     title="LEADERBOARDS"
                     onPress={() => navigation.navigate('Leaderboards')}
                 />                

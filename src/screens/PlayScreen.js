@@ -121,6 +121,7 @@ export default ({ route, navigation }) => {
                         style={DefaultStyle.rowButtonItem}
                         color='error'
                         size='lg'
+                        radius='lg'
                         key={key} 
                         title={char} 
                         onPress={(e) => handlePress(e, char, key)} 
@@ -134,6 +135,7 @@ export default ({ route, navigation }) => {
                     <Button 
                         color='secondary' 
                         size='lg' 
+                        radius='lg'
                         title='Reset' 
                         onPress={() => reset()}
                     />
@@ -142,6 +144,7 @@ export default ({ route, navigation }) => {
                     <Button 
                         color="success" 
                         size='lg' 
+                        radius='lg'
                         title='Submit' 
                         onPress={handleSubmit}
                     />
@@ -150,8 +153,9 @@ export default ({ route, navigation }) => {
                     <Button 
                         color="warning" 
                         size='lg' 
+                        radius='lg'
                         title="Skip"
-                         onPress={(e) => advance()} 
+                        onPress={(e) => advance()} 
                     />
                 }    
             </View>
@@ -163,6 +167,7 @@ export default ({ route, navigation }) => {
                 <Button 
                     color='success'
                     size='lg' 
+                    radius='lg'
                     onPress={handleAlertPress} 
                     title='Dismiss' 
                     style={{

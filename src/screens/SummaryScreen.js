@@ -44,13 +44,17 @@ export default ({ navigation }) => {
 
     return (
         <View style={DefaultStyle.absoluteCentered}>
+            { score > 0 &&
+                <Text h3 style={{ textAlign:'center' }}>Congratulations!</Text>
+            }
             <Text h4 style={{ textAlign:'center' }}>
-                { score > 0 && 'Congratulations! ' }You earned { score } points
+                You earned { score } points
             </Text>
             <View style={DefaultStyle.rowButtons}>
                 <Button
                     style={DefaultStyle.rowButtonItem}
-                    size={'lg'}
+                    size='lg'
+                    radius='lg'
                     title="Share"
                     onPress={handleShare}
                     disabled={score == 0}
@@ -59,7 +63,8 @@ export default ({ navigation }) => {
                 <Button
                     style={DefaultStyle.rowButtonItem}
                     color='success'
-                    size={'lg'}
+                    size='lg'
+                    radius='lg'
                     title="Finish"
                     onPress={handleFinish}
                     disabled={!buttonEnabled}
