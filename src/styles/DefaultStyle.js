@@ -42,9 +42,6 @@ export default StyleSheet.create({
     },
     rowButtonItem: {
         flex: 1,
-        minWidth: 80,
-        maxWidth: 80,
-        height: 80,
         justifyContent: "center",
         alignItems: "center",
     },
