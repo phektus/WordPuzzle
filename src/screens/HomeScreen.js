@@ -36,8 +36,8 @@ export default ({ navigation }) => {
     }
 
     return (
-        <View style={DefaultStyle.containerWithHeader}>
-            <View style={DefaultStyle.middle}>
+        <View style={DefaultStyle.containerWithHeader}>             
+            <View>
                 <CheckBox
                     checked={category=='cities'}
                     onPress={() => setCategory('cities')}
@@ -45,7 +45,7 @@ export default ({ navigation }) => {
                     uncheckedIcon="circle-o"
                     size={32}
                     title="Cities"
-                />
+                />          
                 <CheckBox
                     checked={category=='animals'}
                     onPress={() => setCategory('animals')}
@@ -67,25 +67,23 @@ export default ({ navigation }) => {
                 <Button
                     color="success"
                     size="lg"
-                    title="Start"
+                    title="START"
                     onPress={handlePlay}
-                />
-                { total_score > 0 && 
-                    <Text style={{ textAlign:'center' }}>Your total points: {total_score}</Text>
-                }
+                />                
             </View>
                         
             <View style={DefaultStyle.row}>
-                <Button
+                <Button 
                     color="secondary"
-                    title="Leaderboards"
+                    title="LEADERBOARDS"
                     onPress={() => navigation.navigate('Leaderboards')}
-                />
-                <Button
-                    color="warning"
-                    title="My Details"
-                    onPress={() => navigation.navigate('Details')}
-                />
+                />                
+            </View>
+
+            <View style={DefaultStyle.row}>
+                { total_score > 0 && 
+                    <Text h4 style={{ textAlign:'center' }}>Your Total Score: {total_score} points</Text>
+                }
             </View>
             
         </View>

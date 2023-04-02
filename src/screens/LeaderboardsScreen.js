@@ -1,6 +1,5 @@
 
-import { useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { ListItem, Avatar, Text } from '@rneui/themed';
 
 const leaderboardsData = require('../../data/leaderboards.json');
@@ -9,7 +8,7 @@ export default () => {
     const leaderboards = leaderboardsData.leaderboards;
 
     return (
-        <View>
+        <ScrollView>
             { leaderboards.map((item, key) => (
                 <ListItem bottomDivider key={key}>
                     <Avatar
@@ -27,6 +26,6 @@ export default () => {
                     </ListItem.Content>
                 </ListItem>
             ))}            
-        </View>
+        </ScrollView>
     );
 };

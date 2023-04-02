@@ -18,7 +18,9 @@ export default ({ navigation }) => {
                     const storage_score = await AsyncStorage.getItem('@total_score');
                     await AsyncStorage.setItem(
                         '@total_score', 
-                        storage_score === null ? score : parseInt(storage_score) + score
+                        storage_score === null 
+                            ? score.toString() 
+                            : (parseInt(storage_score) + score).toString()
                     );
                 } catch(e) {
                     console.error('Problem fetching total score: ', e);
