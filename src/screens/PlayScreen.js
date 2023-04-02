@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { View } from 'react-native';
 import { Button, Text } from '@rneui/themed';
+import DefaultStyle from '../styles/DefaultStyle';
 
 import { useDispatch } from 'react-redux';
 import { incrementByAmount } from '../redux/features/score/scoreSlice';
@@ -7,7 +9,6 @@ import { incrementByAmount } from '../redux/features/score/scoreSlice';
 import Game from '../Game';
 import { shuffle } from '../CustomUtils';
 import ScoreText from '../components/ScoreText';
-import LevelText from '../components/LevelText';
 
 export default ({ route, navigation }) => {
 	const { category, items } = route.params; 
@@ -29,8 +30,6 @@ export default ({ route, navigation }) => {
     const getDifficulty = () => levels[state.step];
     const getItem = () => items[getDifficulty()];
     const getWord = () => getItem().word;
-    const getWordWithoutSpaces = () => getWord().replaceAll(' ','');
-    const getHint = () => getItem().hint;
 
     const getLetters = () => {
         let letters = state.letters;
@@ -44,9 +43,11 @@ export default ({ route, navigation }) => {
     };
 
     const handlePress = (e, char, key) => {
-        let _state =  Object.assign({}, state);
+        let _state =  Object.assign({}, state);        
         _state.guess.push(char);
+        if(getWord()[_state.guess.length] === ' ') _state.guess.push(' ');
         _state.pressed.push(key);
+        console.log(getWord(), key, _state.guess);
         setState(_state);
     }
 
@@ -68,7 +69,7 @@ export default ({ route, navigation }) => {
     }
 
     const handleSubmit = (e) => {
-        const is_correct = state.guess.join('') === getWordWithoutSpaces();
+        const is_correct = state.guess.join('') === getWord();
         const points = Game.getPoints(getDifficulty());
         let msg = 'Sorry, wrong answer';
         if(is_correct === true) {
@@ -80,38 +81,50 @@ export default ({ route, navigation }) => {
     }
 
     return (
-        <>
-            <ScoreText />
-            <Text>Category: {category}</Text>
-            <LevelText step={state.step+1} maxSteps={levels.length} />
+        <View style={DefaultStyle.containerWithHeader}>
+            <View style={DefaultStyle.middle}>     
+                <View style={DefaultStyle.rowEdged}>
+                    <Text>Category: {category}</Text>
+                    <Text>{state.step} / {levels.length}</Text>
+                    <ScoreText />                    
+                </View>
+                <View style={DefaultStyle.row}>
+                    { getWord().split('').map((char, key) => (                          
+                        <Text h3 key={key} style={char !== ' ' && {textDecorationLine: 'underline'}}>
+                            {(key < state.guess.length && char !== ' ') ? state.guess[key] : '   '}
+                        </Text>       
+                    ))}
+                </View>
+            </View>
             
-            { getWord().split('').map((char, key) => (  
-                <Text key={key}>{key < state.guess.length ? state.guess[key] : ''}</Text>       
-            ))}
+            <View style={DefaultStyle.middle}>
+                { getLetters().map((char, key) => (
+                    state.pressed.indexOf(key) === -1 &&
+                    <Button 
+                        type='outline'
+                        key={key} 
+                        title={char} 
+                        onPress={(e) => handlePress(e, char, key)} 
+                    />
+                ))}
 
-            { getLetters().map((char, key) => (
-                state.pressed.indexOf(key) === -1 &&
-                <Button 
-                    type='outline'
-                    key={key} 
-                    title={char} 
-                    onPress={(e) => handlePress(e, char, key)} 
-                />
-            ))}
+                <Text>Hint: {getItem().hint}</Text>
 
-            <Text>Hint: {getHint()}</Text>
+                { state.guess.length > 0 && 
+                    <Button title='Reset' onPress={() => reset()}/>
+                }
+            </View>
+        
 
-            { state.guess.length > 0 && 
-                <Button title='Reset' onPress={() => reset()}/>
-            }
+            
 
-            { state.guess.length === (getWordWithoutSpaces().length) && 
+            { state.guess.length === (getWord().length) && 
                 <Button title='Submit' onPress={handleSubmit}/>
             }
         
-            { state.guess.length < (getWordWithoutSpaces().length) &&
+            { state.guess.length < (getWord().length) &&
                 <Button title="Skip" onPress={(e) => advance()} />
             }                
-        </>
+        </View>
     );
 };

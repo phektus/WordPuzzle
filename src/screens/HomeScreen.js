@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { View } from 'react-native';
-import { CheckBox, Button, Text } from '@rneui/themed';
+import { CheckBox, Button } from '@rneui/themed';
 import DefaultStyle from '../styles/DefaultStyle';
 
 import { useDispatch } from 'react-redux';
 import { resetScore } from '../redux/features/score/scoreSlice';
 
-import CategoryPicker from '../components/CategoryPicker';
 import Game from '../Game';
 
 export default ({ navigation }) => {        
@@ -14,7 +13,6 @@ export default ({ navigation }) => {
     const dispatch = useDispatch();    
 
     const handlePlay = () => {
-        console.log(category);
         const _category = category === 'random' 
             ? Game.randomizeCategory()
             : category;
@@ -32,7 +30,7 @@ export default ({ navigation }) => {
     }
 
     return (
-        <View style={DefaultStyle.containerWithHeader}>            
+        <View style={DefaultStyle.containerWithHeader}>
             <View style={DefaultStyle.middle}>
                 <CheckBox
                     checked={category=='random'}
