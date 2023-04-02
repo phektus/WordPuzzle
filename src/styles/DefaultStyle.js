@@ -23,10 +23,9 @@ export default StyleSheet.create({
         justifyContent: 'space-around',
     },
     row: {
-        flex: 0.3,
+        flex: 0.2,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        margin: 10,
     },
     rowEdged: {
         flex: 0.3,

@@ -55,6 +55,7 @@ export default ({ navigation }) => {
                     onPress={handleShare}
                     disabled={score == 0}
                 />
+                <Text style={{ width: 20 }}>{' '}</Text>
                 <Button
                     style={DefaultStyle.rowButtonItem}
                     color='success'

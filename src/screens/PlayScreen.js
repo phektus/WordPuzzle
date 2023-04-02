@@ -99,7 +99,10 @@ export default ({ route, navigation }) => {
                     { getWord().split('').map((char, key) => (                          
                         <Text 
                             h3 key={key} 
-                            style={char !== ' ' && {textDecorationLine: 'underline'}}
+                            style={char !== ' ' && {
+                                borderWidth: 1,
+                                borderColor: "lightgrey",
+                            }}
                         >
                             {(key < state.guess.length && char !== ' ') 
                                 ? state.guess[key] 
@@ -158,7 +161,7 @@ export default ({ route, navigation }) => {
             >
                 <Text h4>{ alertMsg }</Text>
                 <Button 
-                    color='error'
+                    color='success'
                     size='lg' 
                     onPress={handleAlertPress} 
                     title='Dismiss' 
