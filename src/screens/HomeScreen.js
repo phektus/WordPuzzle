@@ -70,10 +70,11 @@ export default ({ navigation }) => {
                     title="Start"
                     onPress={handlePlay}
                 />
-                <Text style={{ textAlign:'center' }}>Your total points: {total_score}</Text>
+                { total_score > 0 && 
+                    <Text style={{ textAlign:'center' }}>Your total points: {total_score}</Text>
+                }
             </View>
-            
-            
+                        
             <View style={DefaultStyle.row}>
                 <Button
                     color="secondary"

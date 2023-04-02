@@ -2,6 +2,6 @@ import { Text } from '@rneui/themed';
 
 export default ({step, maxSteps}) => (
     <>
-        <Text>{step} / {maxSteps}</Text>
+        <Text h3>{step} / {maxSteps}</Text>
     </>        
 );

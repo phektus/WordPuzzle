@@ -1,0 +1,38 @@
+{
+	"leaderboards": [{
+			"name": "angrybeaver203",
+			"score": 22979,
+            "color": "green"
+		},
+		{
+			"name": "peacefultruck371",
+			"score": 19311,
+            "color": "pink"
+		},
+		{
+			"name": "flyingcanopy629",
+			"score": 15773,
+            "color": "blue"
+		},
+		{
+			"name": "rapidcamper228",
+			"score": 12938,
+            "color": "black"
+		},
+		{
+			"name": "blessedwindow562",
+			"score": 8371,
+            "color": "red"
+		},
+		{
+			"name": "elevatedspoon403",
+			"score": 5663,
+            "color": "green"
+		}, 
+        {
+			"name": "bluehorse371",
+			"score": 4338,
+            "color": "purple"
+		}
+	]
+}
