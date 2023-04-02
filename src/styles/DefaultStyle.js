@@ -32,6 +32,21 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    rowButtons: {
+        flex: 0.3,
+        flexDirection: 'row',
+        marginHorizontal: 'auto',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+    },
+    rowButtonItem: {
+        flex: 1,
+        minWidth: 80,
+        maxWidth: 80,
+        height: 80,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     centered: {
         flex: 0.3,
         justifyContent: 'center',

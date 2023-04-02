@@ -47,7 +47,6 @@ export default ({ route, navigation }) => {
         _state.guess.push(char);
         if(getWord()[_state.guess.length] === ' ') _state.guess.push(' ');
         _state.pressed.push(key);
-        console.log(getWord(), key, _state.guess);
         setState(_state);
     }
 
@@ -102,22 +101,22 @@ export default ({ route, navigation }) => {
                     ))}
                 </View>
             </View>
+
+            <Text style={{ textAlign:'center' }}>{getItem().hint}</Text>
             
-            <View style={DefaultStyle.row}>
+            <View style={DefaultStyle.rowButtons}>
                 { getLetters().map((char, key) => (
-                    state.pressed.indexOf(key) === -1 &&
                     <Button 
+                        style={DefaultStyle.rowButtonItem}
                         color='error'
                         size='lg'
-                        // type='outline'
                         key={key} 
                         title={char} 
                         onPress={(e) => handlePress(e, char, key)} 
+                        disabled={state.pressed.indexOf(key) !== -1}
                     />
                 ))}
-            </View>
-
-            <Text style={{ textAlign:'center' }}>{getItem().hint}</Text>
+            </View>            
 
             <View style={DefaultStyle.row}>
                 { state.guess.length > 0 && 
