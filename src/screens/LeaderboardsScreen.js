@@ -1,11 +1,29 @@
 
+import { useState, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 import { ListItem, Avatar, Text } from '@rneui/themed';
 
-const leaderboardsData = require('../../data/leaderboards.json');
-
 export default () => {
-    const leaderboards = leaderboardsData.leaderboards;
+    const [leaderboards, setLeaderboards] = useState([]);
+
+    useFocusEffect(
+        useCallback(() => {
+            const fetchLeaderboards = async () => {
+                try {
+                    const response = await fetch(
+                      'https://raw.githubusercontent.com/phektus/WordPuzzle/main/data/leaderboards.json',
+                    );
+                    const json = await response.json();
+                    setLeaderboards(json.leaderboards);
+                } catch (error) {
+                    const leaderboardsData = require('../../data/leaderboards.json');
+                    setLeaderboards(leaderboardsData.leaderboards);
+                }
+            }
+            fetchLeaderboards().catch(console.error);
+        }, [])
+    );
 
     return (
         <ScrollView>
